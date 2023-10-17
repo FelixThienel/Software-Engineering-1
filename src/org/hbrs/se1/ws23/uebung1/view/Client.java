@@ -1,5 +1,8 @@
 package org.hbrs.se1.ws23.uebung1.view;
 
+import org.hbrs.se1.ws23.uebung1.control.Factory;
+import org.hbrs.se1.ws23.uebung1.control.GermanTranslator;
+
 public class Client {
 
 		/*
@@ -8,15 +11,9 @@ public class Client {
 		 *
 		 */
 		 void display( int aNumber ){
-			// In dieser Methode soll die Methode translateNumber
-			// mit dem übergegebenen Wert der Variable aNumber
-			// aufgerufen werden.
-			//
-			// Strenge Implementierung gegen das Interface Translator gewuenscht!
-
-			System.out.println("Das Ergebnis der Berechnung: " +
-					"[das Ergebnis an dieser Stelle]"  );
-
+			 GermanTranslator germanTranslator = Factory.createGermanTranslator();
+			 String ausgabe	= germanTranslator.translateNumber(aNumber);
+			 System.out.println("Das Ergebnis der Berechnung: " + ausgabe);
 		 }
 }
 

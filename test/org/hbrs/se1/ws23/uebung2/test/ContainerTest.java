@@ -24,4 +24,17 @@ class ContainerTest {
         }
         assertEquals(2, container.size());
     }
+
+    @Test
+    public void vorhandenenMemberHinzufuegen() {
+        member1 = new ConcreteMember(0);
+        member2 = new ConcreteMember(0);
+        try {
+            container.addMember(member1);
+            container.addMember(member2);
+        } catch(Exception e) {
+            assertEquals("Das Member-Objekt mit der ID 0 ist bereits vorhanden!", e.getMessage());
+        }
+        assertEquals(1, container.size());
+    }
 }

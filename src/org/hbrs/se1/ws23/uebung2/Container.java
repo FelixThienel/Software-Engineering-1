@@ -8,7 +8,7 @@ public class Container {
     public Container() {
     }
 
-    public void add(Member member) {
+    public void add(Member member) throws ContainerException{
         for(int x = 0; x < container.size(); x++) {
             if(member.getID() == container.get(x).getID())
                 throw new ContainerException("Das Member-Objekt mit der ID" + member.getID() + "ist bereits vorhanden!");

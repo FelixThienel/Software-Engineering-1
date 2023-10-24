@@ -17,14 +17,14 @@ public class Container {
         container.add(member);
     }
 
-    public String deleteMember(Member member) {
+    public String deleteMember(int member) {
         for(int x = 0; x < container.size(); x++) {
-            if(member.getID() == container.get(x).getID()) {
+            if(member == container.get(x).getID()) {
                 container.remove(x);
                 return "Erfolgreich gelöscht.";
             }
         }
-        return "Konnte Member mit der ID: " + member.getID() + " nicht finden.";
+        return "Konnte Member mit der ID: " + member + " nicht finden.";
     }
 
     public void dump() {

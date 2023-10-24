@@ -11,7 +11,7 @@ public class Container {
     public void add(Member member) {
         for(int x = 0; x < container.size(); x++) {
             if(member.getID() == container.get(x).getID())
-                throw ContainerException;
+                throw new ContainerException("Das Member-Objekt mit der ID" + member.getID() + "ist bereits vorhanden!");
         }
         container.add(member);
     }

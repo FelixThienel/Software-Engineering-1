@@ -22,6 +22,6 @@ class ContainerTest {
             container.addMember(member2);
         } catch(Exception e) {
         }
-        assertEquals(1, container.size());
+        assertEquals(2, container.size());
     }
 }

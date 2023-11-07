@@ -1,12 +1,10 @@
 package org.hbrs.se1.ws23.uebung2;
 
-import java.util.ArrayList;
-
 public class Container {
-    ArrayList<Member> container;
+    List<Member> container;
 
     public Container() {
-        container = new ArrayList<Member>();
+        container = new List<Member>();
     }
 
     public void addMember(Member member) throws ContainerException{

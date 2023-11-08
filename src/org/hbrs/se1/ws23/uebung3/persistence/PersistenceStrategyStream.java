@@ -1,11 +1,19 @@
 package org.hbrs.se1.ws23.uebung3.persistence;
 
+import org.hbrs.se1.ws23.uebung3.Container.Member;
+
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
 
     // URL of file, in which the objects are stored
     private String location = "objects.ser";
+    private FileOutputStream fos;
+    private ObjectOutputStream out;
+    private FileInputStream fis;
+    private ObjectInputStream in;
 
     // Backdoor method used only for testing purposes, if the location should be changed in a Unit-Test
     // Example: Location is a directory (Streams do not like directories, so try this out ;-)!
@@ -20,7 +28,7 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * and save.
      */
     public void openConnection() throws PersistenceException {
-
+        //Wenn ich an dieser Stelle sowohl Out- als auch InputObjects und Files generiere, wird beim Auslesen einer vorhandenen Datei der Inhalt mit einer neuen Datei überschrieben
     }
 
     @Override
@@ -28,7 +36,17 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * Method for closing the connections to a stream
      */
     public void closeConnection() throws PersistenceException {
-
+        try {
+            if(out != null) {
+                out.close();
+                fos.close();
+            } else if (in != null) {
+                in.close();
+                fis.close();
+            }
+        } catch(Exception e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, e.toString());
+        }
     }
 
     @Override
@@ -36,7 +54,13 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * Method for saving a list of Member-objects to a disk (HDD)
      */
     public void save(List<E> member) throws PersistenceException  {
-
+        try {
+            fos = new FileOutputStream(location);
+            out = new ObjectOutputStream(fos);
+            out.writeObject(member);
+        } catch(Exception e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, e.toString());
+        }
     }
 
     @Override
@@ -46,26 +70,14 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * Take also a look at the import statements above ;-!
      */
     public List<E> load() throws PersistenceException  {
-        // Some Coding hints ;-)
-
-        // ObjectInputStream ois = null;
-        // FileInputStream fis = null;
-        // List<...> newListe =  null;
-        //
-        // Initiating the Stream (can also be moved to method openConnection()... ;-)
-        // fis = new FileInputStream( " a location to a file" );
-
-        // Tipp: Use a directory (ends with "/") to implement a negative test case ;-)
-        // ois = new ObjectInputStream(fis);
-
-        // Reading and extracting the list (try .. catch ommitted here)
-        // Object obj = ois.readObject();
-
-        // if (obj instanceof List<?>) {
-        //       newListe = (List) obj;
-        // return newListe
-
-        // and finally close the streams (guess where this could be...?)
-        return null;
+        List<E> member = new ArrayList<E>();
+        try {
+            fis = new FileInputStream(location);
+            in = new ObjectInputStream(fis);
+            member = (List<E>) in.readObject();
+        } catch(Exception e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, e.toString());
+        }
+        return member;
     }
 }

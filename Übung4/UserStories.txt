@@ -1,0 +1,145 @@
+User Stories:
+
+	User Story 1:
+		Beschreibung:
+			Als Studierender möchte ich mich unnkompliziert über Lea anmelden. 
+			Dies erleichtert das Anmelden und spart Zeit, wenn man kein eigenes Konto erstellen muss. Zudem wird sichergestellt, dass nur aktive Studenten teilnehmen können.
+		
+		Details:
+			Implementierung des Lea-Logins in die Seite
+		
+		Test:
+			Anmelden mit aktivem Student -> Anmelden,
+			Anmeldeversuch von außerhalb -> Fehler,
+			Anmeldeversuch mit ehemaligem Student -> Fehler
+		
+		Werte:
+			Value: 5,
+			Aufwand: (mit Vorwissen) 2 (ohne Vorwissen) 5
+			
+			
+	User Story 2:
+		Beschreibung: 
+			Als ehemaliger Student möchte ich mich trotzdem noch anmelden können, um Zeugnisse bzw. Nachweise einsehen zu können.
+			Dies kann das Anmelden erleichtern. Es Hilft Absolventen ihre Nachweise zu sichern.
+			
+		Details:
+			Verknüpfung einer Mailadresse mit dem Konto,
+			Alternatives Anmelden über diese Mailadresse
+			
+		Test:
+			Nach Verknüfung Anmelden mit Mailadresse -> Anmelden,
+			Nach Verknüfung Anmelden mit Mailadresse nachdem der Lea zugang entfernt wurde -> Anmelden (eingeschränkte Nutzung),
+			Ohne Verknüpfung Anmeldeversuch -> Fehler
+			
+		Werte:
+			Value: 4,
+			Aufwand: 3
+			
+			
+	User Story 3:
+		Beschreibung:
+			Als Student möchte ich einzelne Themengebiete abonnieren und somit benachrichtigt werden, wenn es neue Stellen gibt.
+			Dies erleichtert die Stellensuche für Studenten.
+			
+		Details:
+			Datenbank mit Themengebieten implementieren,
+			Stellenangebote zu Themengebieten zuordnen,
+			Mailbenachrichtigung bei neuen Stellen in abonnierten Themengebieten
+			
+		Test:
+			Student abonniert Thema A, neue Stelle in Thema A -> Mail,
+			Student abonniert Thema A, neue Stelle in Thema B -> keine Mail
+			
+		Wete:
+			Value: 4,
+			Aufwand: 3
+			
+			
+	User Story 4:
+		Beschreibung:
+			Als Unternehmen möchte ich Stellenangebote einstellen können.
+			Dies ermöglicht den Sinn des Projektes.
+		
+		Details:
+			Uternehmens-Account erstellen von Stellenangeboten, die Auf dem "Markt" für Studenten sichtbar sind,
+			Benachrichtigung an Studenten
+		
+		Test:
+			Angebot einstellen -> Von Studenten-Account erreichbar,
+			Angebot einstellen -> Mail an Studenten-Accounts die abboniert haben
+		
+		Werte:
+			Value: 5,
+			Aufwand: 2
+			
+			
+	User Story 5:
+		Beschreibung:
+			Als Unternehmen möchte ich Vorkenntnisse vorraussetzten.
+			Durch diese Vorfilterung erleichtert es Unternehmen bei zu vielen Anfragen.
+		
+		Details:
+			Bestimmte Module als Vorraussetzung zum Bewerben,
+			Abgleich der Vorraussetzung mit den bestandenen Modulen des Studentens
+		
+		Test:
+			Angebot einstellen, Vorraussetzung Modul A, Student hat Modul A bestanden -> Bewerbung
+			Angebot einstellen, Vorraussetzung Modul A, Student hat Modul A noch nicht bestanden -> Fehler
+		
+		Werte:
+			Value: 2,
+			Aufwand: 2 (ohne automatische Prüfung), 4 (mit automatischer Prüfung)
+			
+			
+	User Story 6:
+		Beschreibung:
+			Als Student möchte ich Stellenangebote, die ich angenommen habe, bewerten können.
+			Dies hilft anderen Studenten, um zu sehen, ob die Stelle passend für sie ist.
+		
+		Details:
+			Bewertungssystem implementieren
+		
+		Test:
+			Stellenangebot welches von Student A besucht wurde -> Bewertung
+			Stellenangebot welches von Student A nicht besucht wurde -> Fehler
+		
+		Werte:
+			Value: 3,
+			Aufwand: 2
+			
+		
+	User Story 7:
+		Beschreibung:
+			Als Professor möchte ich Stellenangebot extra bewerten können.
+			Dies Hilft den Studenten zu sehen, welche Stellenangebot eine gute Praxiserfahrung für welche Module bieten.
+		
+		Details:
+			Priorisierte Bewertung im Bewerungssystem,
+			Verknüpfung mit Modulen
+		
+		Test:
+			Student A bewertet, Professor B bewertet -> Bewertung von B immer über A
+			Professor A bewertet Stellenangebot B -> Verknüfung zu Modul 
+		
+		Werte:
+			Value: 4,
+			Aufwand: 2
+			
+			
+	User Story 8:
+		Beschreibung:
+			Als Professor möchte ich ein bestimmtes Stellenangebot als Praxismodul markieren.
+			Dies Hilft den Studenten Praxismodule zu finden.
+		
+		Details:
+			Makierung als Praxismodul implementieren,
+			Benotung implementieren
+		
+		Test:
+			Student filtert Angebote nach Praxismodulen -> nur markierte Anzeigen,
+			Student A belegt Praxismodul -> Unternehmen sendet Note an Professor, der das Modul markiert hat
+		
+		Werte:
+			Value: 4,
+			Aufwand: 3

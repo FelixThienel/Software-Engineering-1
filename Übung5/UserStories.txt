@@ -1,0 +1,32 @@
+User Stories:
+
+	User Story 1:
+		Beschreibung:
+			Als Studierender möchte ich mich auf Projektausschreibungen bewerben können. 
+		
+		Details:
+			Weiterleitung der Bewerbung an das Unternehmen.
+		
+		Test:
+			Bewerbung mit passenden Skills -> Weiterleitung,
+			Bewebung mit fehlenden Skills -> Fehler,
+		
+		Werte:
+			Value: 5,
+			Aufwand: 3
+			
+			
+	User Story 2:
+		Beschreibung:
+			Als Studierender möchte ich nach Projektausschreibungen suchen können.
+			
+		Details:
+			Suchmaske mit Parametern für Skills, Unternehmen, Arbeitszeiten...
+			
+		Test:
+			Suche nach Projektausschreibung die es nicht gibt -> Fehler,
+			Suche nach Projektausschreibung -> Übersicht der Projekte
+			
+		Werte:
+			Value: 4,
+			Aufwand: 2
